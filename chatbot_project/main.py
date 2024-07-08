@@ -12,7 +12,17 @@ def generate_response(prompt):
     inputs = tokenizer(prompt, return_tensors="pt" ,padding = True)
     input_ids = inputs['input_ids']
     attention_mask = inputs['attention_mask']
-    outputs = model.generate(input_ids, attention_mask = attention_mask, max_length=150, num_return_sequences=1 ,pad_token_id = tokenizer.eos_token_id)
+
+
+    outputs = model.generate(input_ids,
+     attention_mask = attention_mask, 
+     max_length=150,
+      num_return_sequences=1 ,
+      pad_token_id = tokenizer.eos_token_id,
+      temperature = 0.7,# handel creativity of chatbot 
+      top_p = 0.9 ,#nucleus sampling(help to repat answers)
+      do_sample=True #for active sampeling
+      )
     response = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return response
 
