@@ -21,7 +21,9 @@ def generate_response(prompt):
       pad_token_id = tokenizer.eos_token_id,
       temperature = 0.7,# handel creativity of chatbot 
       top_p = 0.9 ,#nucleus sampling(help to repat answers)
-      do_sample=True #for active sampeling
+      do_sample=True, #for active sampeling
+      num_beams=5, #use beam search
+      repetition_penalty=1.2, # stop bot for repeting answers
       )
     response = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return response
