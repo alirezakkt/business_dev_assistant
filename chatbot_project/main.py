@@ -25,6 +25,7 @@ def generate_response(prompt):
       do_sample=True, #for active sampeling
       num_beams=5, #use beam search
       repetition_penalty=2.0, # stop bot for repeting answers
+      no_repeat_ngram_size=2 , # dont generate duplicate tokens
       )
     response = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return response
