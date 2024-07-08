@@ -1,0 +1,7 @@
+
+
+req:
+```plaintext
+transformers
+torch
+
